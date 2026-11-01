@@ -41,7 +41,21 @@ The position update expects local Cartesian coordinates in metres, not latitude 
 - C++11 or newer.
 - Eigen 3 headers available to the compiler; the implementation includes `<Eigen/Dense>`.
 
-The implementation currently includes a demonstration `main()` as well as the filter, so it builds as a standalone example. For example, with GCC or Clang and Eigen in a standard include path:
+## CMake package
+
+The library is header-only and can be built, tested, and installed with CMake:
+
+```sh
+cmake -S . -B build -DBUILD_TESTING=ON
+cmake --build build
+ctest --test-dir build --output-on-failure
+cmake --install build --prefix /path/to/prefix
+```
+
+Downstream CMake projects can use `find_package(RoverEKF CONFIG REQUIRED)` and
+link `RoverEKF::RoverEKF`. Eigen3 is an exported dependency.
+
+The standalone demo is in `RoverEKF.cpp`. For example, with GCC or Clang and Eigen in a standard include path:
 
 ```sh
 g++ -std=c++11 -O2 Rover_EKF_/RoverEKF.cpp -o rover_ekf_demo
