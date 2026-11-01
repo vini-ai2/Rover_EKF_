@@ -503,7 +503,7 @@ struct EncoderMeasurement
 // v
 // omega
 
-EncoderMeasurement encoderToVelocity(
+inline EncoderMeasurement encoderToVelocity(
     long long left_ticks,
     long long right_ticks,
     double dt,
